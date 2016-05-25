@@ -1,0 +1,19 @@
+<table>
+	<a href="{:U('add')}">添加用户</a>
+	<tr>
+		<th>序号</th>
+		<th>ID</th>
+		<th>name</th>
+		<th>操作</th>
+	</tr>
+	<foreach name="users" item="users" key="k">
+		<tr>
+			<td>{$k+1}</td>
+			<td>{$users[id]}</td>
+			<td>{$users[name]}</td>
+			<td><a class="button" href=":U('detail?id='.$user['id'])}">查看</td>
+			<td><a class="button" href=":U('detail?id='.$user['id'])}">编辑</td>
+			<td><a class="button" href=":U('detail?id='.$user['id'])}">删除</td>
+		</tr>
+	</foreach>
+</table>
