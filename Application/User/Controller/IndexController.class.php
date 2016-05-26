@@ -62,20 +62,33 @@ class IndexController extends Controller{
 	public function editAction(){
 		//获取用户id
 		$userId = I('get.id');
+
 		//获取用户信息getListById()
 		$UserL = New UserLogic();
 		$user = $UserL->getListById($userId);
+
 		//传给前台
 		$this->assign('user',$user);
+
 		//显示display('add')
 		$this->display();
 	}
 
 	public function updateAction()
 	{
+		//获取用户信息
 		$data = I('post.');
+		//保存修改save()
 		$UserL = New UserLogic();
-		dump($UserL->save($data));
-		$this->success('success', U('index'));
+		$UserL->save($data);
+		//保存成功success()
+		$this->success("操作成功",U('User/Index/index'));
+
+
+
+		// $data = I('post.');
+		// $UserL = New UserLogic();
+		// dump($UserL->save($data));
+		// $this->success('success', U('index'));
 	}
 }
