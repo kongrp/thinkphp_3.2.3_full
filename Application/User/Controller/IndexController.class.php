@@ -10,10 +10,9 @@ class IndexController extends Controller{
 		$UserL = New UserLogic();
 		$users = $UserL->getAllLists();
 
-		//传值assign()
-		$this->assign('users',$users);
-		//显示display()
-		$this->display();
+		// 
+		$this->assign('users',$users);	//传值assign()
+		$this->display();				//显示display()
 	}
 
 	public function addAction(){
@@ -24,10 +23,12 @@ class IndexController extends Controller{
 		//获取用户输入的信息
 		$user = I('post.');
 		dump($user);
+
 		//添加add()方法
 		$UserL = New UserLogic();
 		$status = $UserL->add($user);
 		dump($status);
+
 		//echo $this->getLastSql();
 		//判断状态
 		if($status==true){
@@ -43,9 +44,11 @@ class IndexController extends Controller{
 		//取ID
 		$userId = I('get.id');
 		dump($userId);
+
 		//删除deleteinfo($Id)
 		$UserL = New UserLogic();
 		$status = $UserL->deleteInfo($userId);
+
 		dump($status);
 		//判断是否删除成功
 		if($status==true){
@@ -65,6 +68,14 @@ class IndexController extends Controller{
 		//传给前台
 		$this->assign('user',$user);
 		//显示display('add')
-		$this->display('add');
+		$this->display();
+	}
+
+	public function updateAction()
+	{
+		$data = I('post.');
+		$UserL = New UserLogic();
+		dump($UserL->save($data));
+		$this->success('success', U('index'));
 	}
 }
