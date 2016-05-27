@@ -6,12 +6,12 @@
 		<th>name</th>
 		<th>操作</th>
 	</tr>
-	<?php if(is_array($users)): foreach($users as $k=>$users): ?><tr>
+	<?php if(is_array($users)): foreach($users as $k=>$user): ?><tr>
 			<td><?php echo ($k+1); ?></td>
-			<td><?php echo ($users[id]); ?></td>
-			<td><?php echo ($users[name]); ?></td>
-			<td><a class="button" href=":U('detail?id='.$user['id'])}">查看</td>
-			<td><a class="button" href=":U('detail?id='.$user['id'])}">编辑</td>
-			<td><a class="button" href=":U('detail?id='.$user['id'])}">删除</td>
+			<td><?php echo ($user[id]); ?></td>
+			<td><?php echo ($user[name]); ?></td>
+			<td><a class="button" href="<?php echo U('detail?id='.$user['id']);?>">查看</a></td>
+			<td><a class="button" href="<?php echo U('edit?id='.$user['id']);?>">编辑</a></td>
+			<td><a class="button" href="<?php echo U('delete?id='.$user['id']);?>">删除</a></td>
 		</tr><?php endforeach; endif; ?>
 </table>

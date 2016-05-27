@@ -12,11 +12,26 @@ class UserLogic extends UserModel{
 	public function getAllLists(){
 		$datas = $this->select();
 		return $datas;
-
-	 function add($List){
-			$data = $this->create($List);
-			$data = $this->add();
-			return $data;
-		}
 	}
+
+	 // function add($List){
+		// 	$data = $this->create($List);
+		// 	$data = $this->add();
+		// 	return $data;
+		// }
+
+	public function deleteInfo($id){
+			$map['id'] = $id;
+			$where=$this->where($map);
+			return $where->delete();
+		}
+
+		public function getlistById($id){
+
+		$map['id'] = $id;
+		$data = $this->where($map)->find();
+		return $data;
+
+	}
+	
 }
